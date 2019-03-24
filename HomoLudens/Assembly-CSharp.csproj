@@ -60,9 +60,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\ActivarNave.cs" />
-    <Compile Include="Assets\GameManagerScript.cs" />
-    <Compile Include="Assets\naveScript.cs" />
     <Compile Include="Assets\Scripts\MonitoMovement.cs" />
     <Reference Include="Cinemachine">
       <HintPath>C:/Users/André/Desktop/IngenioGameMonkey/HomoLudens/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
