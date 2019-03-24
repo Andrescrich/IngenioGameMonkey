@@ -7,11 +7,12 @@ public class MonitoMovement : MonoBehaviour
     //Las variables con valores es mejor ponerlas en public asi aparecen en el inspector para modificarlas sin entrar a codigo
     private Rigidbody2D rb;
     public float velocity = 4f;
-    public bool jump = false;
+    private bool jump = false;
     public float jumpForce = 800f;
 
     void Start()
     {
+        Physics2D.IgnoreLayerCollision(8, 9);
         rb = GetComponent<Rigidbody2D>();
     }
 
