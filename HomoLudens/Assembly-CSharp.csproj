@@ -61,10 +61,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\ActivarNave.cs" />
+    <Compile Include="Assets\Scripts\AudioManagerScript.cs" />
     <Compile Include="Assets\Scripts\GameManagerScript.cs" />
     <Compile Include="Assets\Scripts\MonitoMovement.cs" />
     <Compile Include="Assets\Scripts\naveScript.cs" />
     <Compile Include="Assets\Scripts\Parallaxing.cs" />
+    <Compile Include="Assets\Scripts\Sound.cs" />
     <Reference Include="Cinemachine">
       <HintPath>C:/Users/André/Desktop/IngenioGameMonkey2/HomoLudens/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
     </Reference>

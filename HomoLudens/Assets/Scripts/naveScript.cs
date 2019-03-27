@@ -26,7 +26,7 @@ public class naveScript : MonoBehaviour
     {
         rb.velocity = new Vector3(0f, velocity);
         if (empujar) Invoke("StopMoving", 2.5f);
-        if (monoMoviendose) Invoke("MonitoVuelveAMoverse", 6.5f);
+        Invoke("MonitoVuelveAMoverse", 7f); 
         Invoke("NaveMoviendose", 7f);
         if (naveMoviendose) rb.velocity = new Vector3(6.75f, 0f);
     }
@@ -45,8 +45,13 @@ public class naveScript : MonoBehaviour
 
     void MonitoVuelveAMoverse()
     {
-       GameManagerScript.inputEnabled = true;
-       monoMoviendose = false;
+        if (monoMoviendose)
+        {
+            GameManagerScript.inputEnabled = true;
+            monoMoviendose = false;
+            FindObjectOfType<AudioManagerScript>().Play("Theme2");
+            Debug.Log("A");
+        }
     }
 
     void NaveMoviendose()

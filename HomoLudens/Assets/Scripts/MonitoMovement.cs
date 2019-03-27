@@ -21,6 +21,7 @@ public class MonitoMovement : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(isGrounded);
         if (Input.GetButtonDown("Jump") && GameManagerScript.inputEnabled && isGrounded)
         {
             jump = true;

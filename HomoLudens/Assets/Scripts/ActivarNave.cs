@@ -26,9 +26,10 @@ public class ActivarNave : MonoBehaviour
             vcam2.m_Priority = 11;
             MonitoMovement.Instance.velocity = 0f;
             GameManagerScript.inputEnabled = false;
-            player.transform.position = new Vector3(39.2f, -4.894f, 0f);
+            player.transform.position = new Vector3(15.9f, -7.64f, 0f);
             Invoke("ActivaNave", 2f);
             vcam.m_Follow = null;
+            FindObjectOfType<AudioManagerScript>().Stop("Theme");
         }
     }
 
