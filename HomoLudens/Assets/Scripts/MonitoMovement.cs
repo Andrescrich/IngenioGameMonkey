@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
+
 
 public class MonitoMovement : MonoBehaviour
 {
@@ -11,11 +13,16 @@ public class MonitoMovement : MonoBehaviour
     public float jumpForce = 800f;
     public static MonitoMovement Instance;
     private bool isGrounded;
+    private Animator anim;
+
+    
 
     void Start()
     {
         Physics2D.IgnoreLayerCollision(8, 9);
         rb = GetComponent<Rigidbody2D>();
+        anim = gameObject.GetComponent<Animator>();
+        anim.SetBool("die", false);
         Instance = this;
     }
 
@@ -46,11 +53,24 @@ public class MonitoMovement : MonoBehaviour
     {
         if(collision.gameObject.tag == "Ground")
         isGrounded = true;
+
+        if (collision.gameObject.tag == "obstacle")
+        {
+            anim.SetBool("die", true);
+            GameManagerScript.inputEnabled = false;
+            Invoke("restart",2);
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Ground")
             isGrounded = false;
+    }
+
+    void restart()
+    {
+        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

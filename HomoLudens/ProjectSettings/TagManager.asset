@@ -8,6 +8,7 @@ TagManager:
   - vcam
   - vcam2
   - Ground
+  - obstacle
   layers:
   - Default
   - TransparentFX
