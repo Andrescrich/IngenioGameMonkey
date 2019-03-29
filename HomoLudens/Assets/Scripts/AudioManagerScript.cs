@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using System;
+using UnityEngine.SceneManagement;
 
 public class AudioManagerScript : MonoBehaviour
 {
@@ -23,7 +24,16 @@ public class AudioManagerScript : MonoBehaviour
 
     void Start()
     {
-        Play("Theme");
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            Play("Base1");
+            Play("Melodia1");
+        }
+        else if(SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            Invoke("DelayMusica", 1.15f);
+            Play("IntroMelodia");
+        }
     }
 
     public void Play(string name)
@@ -38,5 +48,11 @@ public class AudioManagerScript : MonoBehaviour
         Sound s = Array.Find(sounds, sound => sound.name == name);
         if (s == null) return;
         s.source.Stop();
+    }
+
+    void DelayMusica()
+    {
+        Play("Base1");
+        Play("Melodia1");
     }
 }

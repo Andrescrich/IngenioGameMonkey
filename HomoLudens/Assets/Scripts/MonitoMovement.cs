@@ -46,13 +46,18 @@ public class MonitoMovement : MonoBehaviour
         {
             rb.AddForce(new Vector2(0f, jumpForce));
             jump = false;
+            FindObjectOfType<AudioManagerScript>().Play("Salto");
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Ground")
-        isGrounded = true;
+        {
+            isGrounded = true;
+            FindObjectOfType<AudioManagerScript>().Play("pasosCesped");
+            FindObjectOfType<AudioManagerScript>().Play("caidaSobreCesped");
+        }
 
         if (collision.gameObject.tag == "obstacle")
         {
@@ -60,12 +65,18 @@ public class MonitoMovement : MonoBehaviour
             GameManagerScript.inputEnabled = false;
             Invoke("restart",2);
         }
+
+        if (collision.gameObject.tag == "ChangeLevel")
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Ground")
             isGrounded = false;
+        FindObjectOfType<AudioManagerScript>().Stop("pasosCesped");
     }
 
     void restart()

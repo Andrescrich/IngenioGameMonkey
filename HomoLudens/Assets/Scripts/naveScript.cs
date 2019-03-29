@@ -20,6 +20,7 @@ public class naveScript : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         vcam = GameObject.FindGameObjectWithTag("vcam").GetComponent<CinemachineVirtualCamera>();
         vcam2 = GameObject.FindGameObjectWithTag("vcam2").GetComponent<CinemachineVirtualCamera>();
+        FindObjectOfType<AudioManagerScript>().Play("Ovni");
     }
     // Update is called once per frame
     void FixedUpdate()
@@ -49,7 +50,7 @@ public class naveScript : MonoBehaviour
         {
             GameManagerScript.inputEnabled = true;
             monoMoviendose = false;
-            FindObjectOfType<AudioManagerScript>().Play("Theme2");
+            FindObjectOfType<AudioManagerScript>().Play("introPersecucion");
             Debug.Log("A");
         }
     }
