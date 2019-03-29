@@ -37,6 +37,7 @@ public class ActivarNave : MonoBehaviour
     void ActivaNave()
     {
         nave.GetComponent<naveScript>().enabled = true;
+        nave.GetComponent<AudioSource>().enabled = true;
         vcam.m_Follow = nave.transform;
     }
 }

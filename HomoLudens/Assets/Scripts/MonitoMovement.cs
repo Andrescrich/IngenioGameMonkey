@@ -64,6 +64,8 @@ public class MonitoMovement : MonoBehaviour
             anim.SetBool("die", true);
             GameManagerScript.inputEnabled = false;
             Invoke("restart",2);
+            FindObjectOfType<AudioManagerScript>().Play("Hit");
+            GameManagerScript.vidas--;
         }
 
         if (collision.gameObject.tag == "ChangeLevel")
@@ -81,7 +83,7 @@ public class MonitoMovement : MonoBehaviour
 
     void restart()
     {
-        
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        GameManagerScript.inputEnabled = true;
     }
 }
