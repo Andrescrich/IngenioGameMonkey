@@ -70,7 +70,8 @@ public class MonitoMovement : MonoBehaviour
 
         if (collision.gameObject.tag == "ChangeLevel")
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            GameObject.Find("LevelChanger").GetComponent<Animator>().SetTrigger("FadeOut");
+            Invoke("ChangeLevelDelay", 1f);
         }
     }
 
@@ -85,5 +86,10 @@ public class MonitoMovement : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         GameManagerScript.inputEnabled = true;
+    }
+
+
+    void ChangeLevelDelay() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
