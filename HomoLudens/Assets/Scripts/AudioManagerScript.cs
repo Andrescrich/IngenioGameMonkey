@@ -34,6 +34,10 @@ public class AudioManagerScript : MonoBehaviour
             Invoke("DelayMusica", 1.15f);
             Play("IntroMelodia");
         }
+        else if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            Play("Ultima");
+        }
     }
 
     public void Play(string name)

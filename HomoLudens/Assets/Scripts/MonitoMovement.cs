@@ -28,7 +28,6 @@ public class MonitoMovement : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(isGrounded);
         if (Input.GetButtonDown("Jump") && GameManagerScript.inputEnabled && isGrounded)
         {
             jump = true;
@@ -73,7 +72,12 @@ public class MonitoMovement : MonoBehaviour
             GameObject.Find("LevelChanger").GetComponent<Animator>().SetTrigger("FadeOut");
             Invoke("ChangeLevelDelay", 1f);
         }
+
+        if (collision.gameObject.tag == "Final") {
+            GameObject.Find("LevelChanger").GetComponent<Animator>().SetTrigger("Final");
+        }
     }
+
 
     private void OnCollisionExit2D(Collision2D collision)
     {
