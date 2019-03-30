@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuScript : MonoBehaviour
 {
@@ -9,9 +10,9 @@ public class MenuScript : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-
-    public void Quit()
+    private void Update()
     {
-        Application.Quit();
+        if (Input.GetButtonDown("Jump")) PlayGame();       
     }
 }
+
