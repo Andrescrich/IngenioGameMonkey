@@ -15,7 +15,7 @@ public class MonitoMovement : MonoBehaviour
     private bool isGrounded;
     private Animator anim;
 
-    
+    private int currentVida;
 
     void Start()
     {
@@ -24,6 +24,7 @@ public class MonitoMovement : MonoBehaviour
         anim = gameObject.GetComponent<Animator>();
         anim.SetBool("die", false);
         Instance = this;
+        currentVida = GameManagerScript.vidas;
     }
 
     void Update()
@@ -60,11 +61,14 @@ public class MonitoMovement : MonoBehaviour
 
         if (collision.gameObject.tag == "obstacle")
         {
-            anim.SetBool("die", true);
-            GameManagerScript.inputEnabled = false;
-            Invoke("restart",2);
-            FindObjectOfType<AudioManagerScript>().Play("Hit");
-            GameManagerScript.vidas--;
+            if (GameManagerScript.vidas == currentVida)
+            {
+                anim.SetBool("die", true);
+                GameManagerScript.inputEnabled = false;
+                Invoke("restart", 2);
+                FindObjectOfType<AudioManagerScript>().Play("Hit");
+                GameManagerScript.vidas--;
+            }
         }
 
         if (collision.gameObject.tag == "ChangeLevel")
@@ -75,6 +79,7 @@ public class MonitoMovement : MonoBehaviour
 
         if (collision.gameObject.tag == "Final") {
             GameObject.Find("LevelChanger").GetComponent<Animator>().SetTrigger("Final");
+            Invoke("BackToMenu", 2f);
         }
     }
 
@@ -88,12 +93,25 @@ public class MonitoMovement : MonoBehaviour
 
     void restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        GameManagerScript.inputEnabled = true;
+        if (GameManagerScript.vidas > 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            GameManagerScript.inputEnabled = true;
+        }
+        else if (GameManagerScript.vidas == 0)
+            GameObject.Find("LevelChanger").GetComponent<Animator>().SetTrigger("Perder");
+        Invoke("BackToMenu", 2f);
     }
 
 
     void ChangeLevelDelay() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    void BackToMenu()
+    {
+        SceneManager.LoadScene(0);
+        GameManagerScript.vidas = 10;
+        GameManagerScript.inputEnabled = true;
     }
 }

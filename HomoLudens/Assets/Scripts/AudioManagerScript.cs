@@ -24,17 +24,17 @@ public class AudioManagerScript : MonoBehaviour
 
     void Start()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 0)
+        if (SceneManager.GetActiveScene().buildIndex == 1)
         {
             Play("Base1");
             Play("Melodia1");
         }
-        else if(SceneManager.GetActiveScene().buildIndex == 1)
+        else if(SceneManager.GetActiveScene().buildIndex == 2)
         {
             Invoke("DelayMusica", 1.15f);
             Play("IntroMelodia");
         }
-        else if (SceneManager.GetActiveScene().buildIndex == 2)
+        else if (SceneManager.GetActiveScene().buildIndex == 3)
         {
             Play("Ultima");
         }

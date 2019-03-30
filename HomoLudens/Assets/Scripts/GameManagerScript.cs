@@ -25,4 +25,13 @@ public class GameManagerScript : MonoBehaviour
         inputEnabled = true;
         vidas = 10;
     }
+
+    private void Update()
+    {
+        if(Input.GetButtonDown("Submit")) {
+            SceneManager.LoadScene(0);
+            GameManagerScript.vidas = 10;
+            GameManagerScript.inputEnabled = true;
+        }
+    }
 }

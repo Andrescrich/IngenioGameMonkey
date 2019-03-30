@@ -60,10 +60,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\MenuScript.cs" />
     <Compile Include="Assets\naveNormalScript.cs" />
     <Compile Include="Assets\Scripts\ActivarNave.cs" />
     <Compile Include="Assets\Scripts\AudioManagerScript.cs" />
     <Compile Include="Assets\Scripts\GameManagerScript.cs" />
+    <Compile Include="Assets\Scripts\lifeManager.cs" />
     <Compile Include="Assets\Scripts\MonitoMovement.cs" />
     <Compile Include="Assets\Scripts\naveScript.cs" />
     <Compile Include="Assets\Scripts\Parallaxing.cs" />
