@@ -114,4 +114,9 @@ public class MonitoMovement : MonoBehaviour
         GameManagerScript.vidas = 10;
         GameManagerScript.inputEnabled = true;
     }
+
+    public void ClickPantalla()
+    {
+        if(GameManagerScript.inputEnabled && isGrounded) jump = true;
+    }
 }
